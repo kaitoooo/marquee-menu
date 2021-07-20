@@ -1,0 +1,50 @@
+.loading {
+    position: fixed;
+    width: 100%;
+    height: 100vh;
+    background-color: #000;
+    // transform-origin: top right;
+    z-index: 1000;
+
+    &__inner {
+        position: fixed;
+        top: 30px;
+        right: 30px;
+        width: 60px;
+        height: 60px;
+        z-index: 100;
+        @include sp {
+            top: get_vw_sp(15);
+            right: get_vw_sp(15);
+            width: get_vw_sp(30);
+            height: get_vw_sp(30);
+        }
+    }
+    &__arrow {
+        position: absolute;
+        width: 70px;
+        transform: rotate(-45deg);
+        bottom: -60px;
+        left: -60px;
+        animation: animation-arrow 1.5s infinite;
+        @include sp {
+            width: 30px;
+            bottom: -30px;
+            left: -30px;
+            animation: animation-arrow-sp 1.5s infinite;
+        }
+    }
+    &__text {
+        position: absolute;
+        bottom: -124px;
+        left: -271px;
+        font-size: 33px;
+        font-family: $font-all;
+        color: #fff;
+        @include sp {
+            bottom: get_vw_sp(-62);
+            left: get_vw_sp(-125);
+            font-size: get_vw_sp(14);
+        }
+    }
+}

@@ -1,0 +1,156 @@
+.toggle {
+    position: fixed;
+    top: 30px;
+    right: 30px;
+    width: 60px;
+    height: 60px;
+    cursor: pointer;
+    z-index: 100;
+    @include sp {
+        top: get_vw_sp(15);
+        right: get_vw_sp(15);
+        width: get_vw_sp(30);
+        height: get_vw_sp(30);
+    }
+
+    &__arrow {
+        position: absolute;
+        width: 70px;
+        transform: rotate(-45deg);
+        bottom: -60px;
+        left: -60px;
+        animation: animation-arrow 1.5s infinite;
+        @include sp {
+            width: 30px;
+            bottom: -30px;
+            left: -30px;
+            animation: animation-arrow-sp 1.5s infinite;
+        }
+    }
+    &__text {
+        position: absolute;
+        transform: rotate(-15deg);
+        top: -10px;
+        left: -10px;
+        font-size: 13px;
+        font-family: $font-all;
+        animation: animation-text 3.5s infinite;
+        @include sp {
+            top: get_vw_sp(-8);
+            left: get_vw_sp(-8);
+            font-size: get_vw_sp(11);
+        }
+    }
+    &__click {
+        position: absolute;
+        transform: rotate(15deg);
+        bottom: -10px;
+        right: -10px;
+        font-size: 13px;
+        font-family: $font-all;
+        animation: animation-click 2.5s infinite;
+        @include sp {
+            bottom: get_vw_sp(-8);
+            right: get_vw_sp(-8);
+            font-size: get_vw_sp(11);
+        }
+    }
+
+    &__yes {
+        position: absolute;
+        transform: rotate(15deg);
+        top: -10px;
+        right: -10px;
+        font-size: 13px;
+        font-family: $font-all;
+        visibility: hidden;
+        animation: animation-text 3.5s infinite;
+        @include sp {
+            top: get_vw_sp(-8);
+            right: get_vw_sp(-8);
+            font-size: get_vw_sp(11);
+        }
+    }
+    &__thanks {
+        position: absolute;
+        transform: rotate(-15deg);
+        bottom: -10px;
+        left: -20px;
+        font-size: 13px;
+        font-family: $font-all;
+        visibility: hidden;
+        animation: animation-click 2.5s infinite;
+        @include sp {
+            bottom: get_vw_sp(-5);
+            left: get_vw_sp(-10);
+            font-size: get_vw_sp(11);
+        }
+    }
+
+    &__border {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        margin: auto;
+
+        &--top,
+        &--center,
+        &--bottom {
+            position: absolute;
+            width: 40px;
+            height: 2px;
+            background-color: #000;
+            left: 0;
+            right: 0;
+            margin: 0 auto;
+            transition: ease 0.3s;
+            @include sp {
+                width: get_vw_sp(20);
+                height: 1px;
+            }
+        }
+
+        &--top {
+            top: 20px;
+            @include sp {
+                top: get_vw_sp(10);
+            }
+
+            &.is-active {
+                top: 30px;
+                transform: rotate(45deg);
+                transition: ease 0.3s;
+                @include sp {
+                    top: get_vw_sp(15);
+                }
+            }
+        }
+        &--center {
+            top: 0;
+            bottom: 0;
+            margin: auto;
+
+            &.is-active {
+                transform: scale(0);
+                transition: ease 0.3s;
+            }
+        }
+        &--bottom {
+            bottom: 20px;
+            @include sp {
+                bottom: get_vw_sp(10);
+            }
+
+            &.is-active {
+                bottom: 30px;
+                transform: rotate(-45deg);
+                transition: ease 0.3s;
+                @include sp {
+                    bottom: get_vw_sp(15);
+                }
+            }
+        }
+    }
+}

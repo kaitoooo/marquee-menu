@@ -1,0 +1,128 @@
+body {
+    margin: 0;
+    --color-text: #111;
+    --color-bg: #f8c792;
+    --color-link: #000;
+    --color-link-hover: #000;
+    --color-border: #bbb6b2;
+    --marquee-bg: #000;
+    --marquee-text: #fff;
+    --menu-focus: #775e41;
+    color: var(--color-text);
+    background-color: var(--color-bg);
+    font-family: reason-new, -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial, sans-serif;
+}
+
+.menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    width: 100vw;
+    height: 100vh;
+    background-color: #6271fa;
+    justify-content: center;
+    opacity: 0;
+    visibility: hidden;
+    z-index: -1;
+
+    &.is-active {
+        z-index: 99;
+    }
+
+    &__item {
+        cursor: default;
+        position: relative;
+        overflow: hidden;
+        text-align: center;
+        box-shadow: 0 -1px var(--color-border);
+
+        &:last-child {
+            box-shadow: 0 1px var(--color-border), 0 -1px var(--color-border);
+        }
+
+        &--link {
+            display: block;
+            position: relative;
+            cursor: pointer;
+            text-decoration: none;
+            font-family: $font-all;
+            white-space: nowrap;
+            font-size: 6vw;
+            line-height: 1.2;
+            font-weight: 600;
+            padding: 1vh 1vw 0;
+            color: #fff;
+            text-transform: uppercase;
+            @include sp {
+                padding: 3vh 1vw;
+            }
+
+            &:focus,
+            &:focus-visible {
+                color: var(--menu-focus);
+            }
+
+            &:focus:not(:focus-visible) {
+                color: var(--color-link);
+            }
+        }
+    }
+
+    &-marquee {
+        position: absolute;
+        top: 0;
+        left: 0;
+        overflow: hidden;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        background: var(--marquee-bg);
+        transform: translate3d(0, 101%, 0);
+
+        &__wrap {
+            height: 100%;
+            width: 100%;
+            transform: translate3d(0, -101%, 0);
+        }
+
+        &__inner {
+            height: 100%;
+            width: fit-content;
+            align-items: center;
+            display: flex;
+            position: relative;
+            animation: animation-marquee 15s linear infinite;
+            will-change: transform;
+        }
+
+        &__text {
+            white-space: nowrap;
+            font-size: 6vw;
+            line-height: 1.2;
+            font-weight: 600;
+            padding: 1vh 1vw 0;
+            text-transform: uppercase;
+            font-family: $font-all;
+            text-align: center;
+            color: var(--marquee-text);
+            font-weight: 400;
+        }
+
+        &__img {
+            width: 15vw;
+            height: 70%;
+            margin: 0 2vw;
+            border-radius: 5vw;
+            background-size: cover;
+            background-position: 50% 50%;
+        }
+    }
+}
+
+@keyframes animation-marquee {
+    100% {
+        transform: translate3d(-50%, 0, 0);
+    }
+}
